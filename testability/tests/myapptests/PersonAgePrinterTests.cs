@@ -7,6 +7,7 @@ public class PersonAgePrinterTests
     private readonly PersonAgePrinter _sut;
     private readonly MemoryStream _memoryStream;
     private readonly StreamWriter _testWriter;
+    private readonly TextWriter _oldConsole;
 
     public PersonAgePrinterTests()
     {
@@ -14,18 +15,19 @@ public class PersonAgePrinterTests
        _memoryStream = new MemoryStream();
        _testWriter = new(_memoryStream);
        _testWriter.AutoFlush = true;
+       _oldConsole = Console.Out;
        Console.SetOut(_testWriter);
     }
 
     [Fact]
-    public void Print_Max_PrintsOut40()
+    public async Task Print_Max_PrintsOut40()
     {
-        _sut.PrintById(3);
+        await _sut.PrintByIdAsync(3);
         _memoryStream.Seek(0, SeekOrigin.Begin);
         using(StreamReader reader = new (_memoryStream))
         {
             var line = reader.ReadLine();
-            System.Console.WriteLine(line);
+            _oldConsole.WriteLine(line);
         }
     }
 }

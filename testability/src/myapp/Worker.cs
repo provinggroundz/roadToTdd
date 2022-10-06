@@ -6,11 +6,10 @@ namespace MyApp;
 
 public class Worker : IHostedService
 {
-    public Task StartAsync(CancellationToken cancellationToken)
+    public async Task StartAsync(CancellationToken cancellationToken)
     {
         PersonAgePrinter printer = new();
-        printer.PrintById(3);
-        return Task.CompletedTask;
+        await printer.PrintByIdAsync(3);
     }
 
     public Task StopAsync(CancellationToken cancellationToken)

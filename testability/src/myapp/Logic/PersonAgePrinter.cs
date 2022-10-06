@@ -14,20 +14,26 @@ public class PersonAgePrinter
         _people.Add(new Person("Dave Developier", 4) { DateOfBirth = new DateTime(1988,8,8)});
     }
 
-    public void PrintById(int id)
+    public async Task PrintByIdAsync(int id)
     {
-        var foundPerson = _people.First(p => p.Id == id);
-        var birthDay = LogicHelpers.GetPersonDateOfBirthFromDatabaseOverTheInternetzz(foundPerson);
-        var age = GetYearsFromDates(birthDay, DateTime.Now);
+        var foundPerson = await GetPersonByIdAsync(id);
+        var birthDay = await LogicHelpers.GetPersonDateOfBirthFromDatabaseOverTheInternetzzAsync(foundPerson);
+        var age = await GetYearsFromDatesAsync(birthDay, DateTime.Now);
         Console.WriteLine($"The person named {foundPerson.Name} is a whopping {age} years old");
     }
 
-    private static int GetYearsFromDates(DateTime first, DateTime second)
+    private Task<Person> GetPersonByIdAsync(int id)
     {
-        return second.Month < first.Month ||
+        var person = _people.First(p => p.Id == id);
+        return Task.FromResult(person);
+    }
+
+    private static Task<int> GetYearsFromDatesAsync(DateTime first, DateTime second)
+    {
+        return Task.FromResult(second.Month < first.Month ||
             (second.Month == first.Month &&
             second.Day < first.Day)
             ? second.Year - first.Year - 1
-            : second.Year - first.Year;
+            : second.Year - first.Year);
     }
 }
