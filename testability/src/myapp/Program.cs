@@ -2,7 +2,6 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
 using MyApp;
 
 IHost host = Host.CreateDefaultBuilder(args)

@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src/MyApp/MyApp.csproj",
+                "${workspaceFolder}/src/myapp/myapp.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/src/MyApp/MyApp.csproj"
+                "${workspaceFolder}/src/myapp/myapp.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
