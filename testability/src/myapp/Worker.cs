@@ -34,6 +34,10 @@ public class Worker : IHostedService
 
     private static async Task Run()
     {
+        IPeopleStore store;
+        IPersonAgeMessageProvider messageProvider;
+
+        var message = await messageProvider.ComposeBirthdayMessageForPerson(await store.GetPersonByIdAsync(3));
         PersonAgePrinter printer = new();
         await printer.PrintByIdAsync(3);
     }
