@@ -43,9 +43,7 @@ public class PersonMessagePrinterService : IHostedService
     private async Task Run()
     {
         if (_personMessageProvider is Decorator decorator)
-        {
             decorator.SetupDecorator("blublublu");
-        }
         var message = await _personMessageProvider.ComposeMessageForPerson(await _peopleStore.GetPersonByIdAsync(3));
         if(_printer is TextWriterSetup writerSetup)
             writerSetup.SetupTextWriter(Console.Out);
