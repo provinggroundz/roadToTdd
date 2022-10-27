@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/testability/testability.sln",
+                "${workspaceFolder}/testability.sln",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/testability/src/myapp/myapp.csproj",
+                "${workspaceFolder}/src/myapp/myapp.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/testability/src/myapp/myapp.csproj"
+                "${workspaceFolder}/src/myapp/myapp.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

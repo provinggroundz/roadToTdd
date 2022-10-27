@@ -3,11 +3,11 @@ using MyApp.Model;
 
 namespace MyApp.Store;
 
-public class DbPeopleStore : PeopleStore
+public class FakeDbPeopleStore : PeopleStore
 {
     readonly List<Person> _people = new();
 
-    public DbPeopleStore()
+    public FakeDbPeopleStore()
     {
         _people.Add(new Person("Baad Developier", 1) { DateOfBirth = new DateTime(1966,6,6)});
         _people.Add(new Person("Good Developier", 2) { DateOfBirth = new DateTime(1977,7,7)});

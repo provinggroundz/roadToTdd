@@ -1,8 +1,8 @@
-using Xunit;
-using MyApp.Store;
 using FluentAssertions;
 
-namespace MyAppTests;
+using MyApp.Store;
+
+namespace MyAppTests.Store;
 
 public class DbPeopleStoreTests
 {
@@ -10,7 +10,7 @@ public class DbPeopleStoreTests
 
     public DbPeopleStoreTests()
     {
-        _sut = new DbPeopleStore();
+        _sut = new FakeDbPeopleStore();
     }
 
     [Fact]

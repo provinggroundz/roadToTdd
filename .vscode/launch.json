@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/testability/src/myapp/bin/Debug/net6.0/myapp.dll",
+            "program": "${workspaceFolder}/src/MyApp/bin/Debug/net6.0/MyApp.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/testability/src/myapp",
+            "cwd": "${workspaceFolder}/src/MyApp",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false

@@ -13,15 +13,15 @@ public class PersonMessagePrinterService : IHostedService
     private readonly IHostApplicationLifetime _appLifetime;
     private readonly PeopleStore _peopleStore;
     private readonly PersonMessageProvider _personMessageProvider;
-    private readonly TextWriterPrinter _textWriterPrinter;
+    private readonly Printer _printer;
 
-    public PersonMessagePrinterService(ILogger<PersonMessagePrinterService> logger,IHostApplicationLifetime appLifetime, PeopleStore peopleStore, PersonMessageProvider personMessageProvider, TextWriterPrinter textWriterPrinter)
+    public PersonMessagePrinterService(ILogger<PersonMessagePrinterService> logger,IHostApplicationLifetime appLifetime, PeopleStore peopleStore, PersonMessageProvider personMessageProvider, Printer printer)
     {
         _logger = logger;
         _appLifetime = appLifetime;
         _peopleStore = peopleStore;
         _personMessageProvider = personMessageProvider;
-        _textWriterPrinter = textWriterPrinter;
+        _printer = printer;
     }
     public async Task StartAsync(CancellationToken cancellationToken)
     {
@@ -47,8 +47,9 @@ public class PersonMessagePrinterService : IHostedService
             decorator.SetupDecorator("blublublu");
         }
         var message = await _personMessageProvider.ComposeMessageForPerson(await _peopleStore.GetPersonByIdAsync(3));
-        
-        await _textWriterPrinter.PrintByIdAsync(message, Console.Out);
+        if(_printer is TextWriterSetup writerSetup)
+            writerSetup.SetupTextWriter(Console.Out);
+        await _printer.Print(message);
     }
 
     public Task StopAsync(CancellationToken cancellationToken)
