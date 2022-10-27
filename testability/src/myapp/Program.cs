@@ -5,6 +5,12 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 
 using MyApp;
+using MyApp.Logic.AgeCalculator;
+using MyApp.Logic.DateTimeProvider;
+using MyApp.Logic.PersonDateOfBirthProvider;
+using MyApp.Logic.PersonMessageProvider;
+using MyApp.Logic.PersonPrinter;
+using MyApp.Store;
 
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Verbose()
@@ -14,7 +20,16 @@ Log.Logger = new LoggerConfiguration()
 
 
 IHost host = Host.CreateDefaultBuilder(args)
-    .ConfigureServices((_, services) => services.AddHostedService<Worker>())
+    .ConfigureServices((_, services) =>
+    {
+        services.AddHostedService<PersonMessagePrinterService>()
+            .AddScoped<PeopleStore, DbPeopleStore>()
+            .AddScoped<TextWriterPrinter,DefaultTextWriterPrinter>()
+            .AddScoped<AgeCalculator, DefaultAgeCalculator>()
+            .AddScoped<DateTimeProvider, CurrentDateTimeProvider>()
+            .AddScoped<PersonDateOfBirthProvider, DatabasePersonDateOfBirthProvider>()
+            .AddScoped<PersonMessageProvider, PersonAgeMessageProvider>();
+    })
     .UseSerilog()
     .Build();
 
