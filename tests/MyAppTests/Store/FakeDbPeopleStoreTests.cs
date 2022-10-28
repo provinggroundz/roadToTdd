@@ -4,11 +4,11 @@ using MyApp.Store;
 
 namespace MyAppTests.Store;
 
-public class DbPeopleStoreTests
+public class FakeDbPeopleStoreTests
 {
     PeopleStore _sut;
 
-    public DbPeopleStoreTests()
+    public FakeDbPeopleStoreTests()
     {
         _sut = new FakeDbPeopleStore();
     }
