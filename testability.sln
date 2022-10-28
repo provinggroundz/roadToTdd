@@ -8,11 +8,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{89EF8DA4-EAB
 		..\.editorconfig = ..\.editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp", "src\myapp\myapp.csproj", "{4A0EBC33-78BF-4C84-8FEE-668393B66C8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyApp", "src\MyApp\MyApp.csproj", "{4A0EBC33-78BF-4C84-8FEE-668393B66C8E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A71CD8E5-B2AC-4BAA-96DB-55D9BDDAB514}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAppTests", "tests\myapptests\myapptests.csproj", "{C012CB13-3B6A-4345-B1E0-98525AF75013}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAppTests", "tests\MyAppTests\MyAppTests.csproj", "{C012CB13-3B6A-4345-B1E0-98525AF75013}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
