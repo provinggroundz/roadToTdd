@@ -22,7 +22,7 @@ public class DecoratedPersonAgeMessageProvider: PersonMessageProvider, Decorator
         _dateOfBirthProvider = dateOfBirthProvider;
         _dateTimeProvider = dateTimeProvider;
         //_logger = logger;
-        _decorator = "********";
+        _decorator = "********"; 
     }
 
     public void SetupDecorator(string newDecorator)

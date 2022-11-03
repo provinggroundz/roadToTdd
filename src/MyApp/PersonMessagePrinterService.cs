@@ -15,7 +15,11 @@ public class PersonMessagePrinterService : IHostedService
     private readonly PersonMessageProvider _personMessageProvider;
     private readonly Printer _printer;
 
-    public PersonMessagePrinterService(ILogger<PersonMessagePrinterService> logger,IHostApplicationLifetime appLifetime, PeopleStore peopleStore, PersonMessageProvider personMessageProvider, Printer printer)
+    public PersonMessagePrinterService(ILogger<PersonMessagePrinterService> logger,
+        IHostApplicationLifetime appLifetime,
+        PeopleStore peopleStore, 
+        PersonMessageProvider personMessageProvider, 
+        Printer printer)
     {
         _logger = logger;
         _appLifetime = appLifetime;

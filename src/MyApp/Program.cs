@@ -1,6 +1,9 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using System.Runtime.CompilerServices;
+
 using Microsoft.Extensions.DependencyInjection;
+
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
@@ -25,10 +28,10 @@ IHost host = Host.CreateDefaultBuilder(args)
         services.AddHostedService<PersonMessagePrinterService>()
             .AddScoped<PeopleStore, FakeDbPeopleStore>()
             .AddScoped<Printer, TextWriterPrinter>()
-            .AddScoped<AgeCalculator, DefaultAgeCalculator>()
+            .AddScoped<AgeCalculator, MakeThemOldAgeCalculator>()
             .AddScoped<DateTimeProvider, CurrentDateTimeProvider>()
             .AddScoped<PersonDateOfBirthProvider, DatabasePersonDateOfBirthProvider>()
-            .AddScoped<PersonMessageProvider, PersonAgeMessageProvider>();
+            .AddScoped<PersonMessageProvider, DecoratedPersonAgeMessageProvider>();
     })
     .UseSerilog()
     .Build();

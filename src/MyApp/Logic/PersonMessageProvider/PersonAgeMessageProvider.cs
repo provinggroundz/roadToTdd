@@ -25,11 +25,17 @@ public class PersonAgeMessageProvider: PersonMessageProvider
     public async Task<string> ComposeMessageForPerson(Person person)
     {
         _logger.LogInformation("Starting Composing the message");
+
         var birthDay = await _dateOfBirthProvider.GetPersonDateOfBirthFromDatabaseOverTheInternetzzAsync(person);
         var age = await _ageCalculator.GetYearsFromDatesAsync(birthDay, _dateTimeProvider.Now);
-        
-        var message =  $"{person.Name} is {age} years old";
+
+        string message = GenerateMessage(age, person.Name);
         _logger.LogInformation("The message is composed: {Message}", message);
         return message;
+    }
+
+    internal string GenerateMessage(int age, string name)
+    {
+        return age < 18 ? "you shall not pass" : $"{name} is {age} years old";
     }
 }
